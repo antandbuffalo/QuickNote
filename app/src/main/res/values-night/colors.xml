@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!--    colorPrimary-->
+    <color name="brown">#FF442c2e</color>
+    <!--    colorPrimaryVariant-->
+    <color name="brown_light">#FF957370</color>
+    <!--    colorOnPrimary-->
+    <color name="brown_dark">#FF352921</color>
+    <!--    colorSecondary-->
+    <color name="green">#FF2c4442</color>
+    <!--    colorSecondaryVariant-->
+    <color name="green_dark">#FF1c2f2d</color>
+    <!--    colorOnSecondary-->
+    <color name="green_light">#FF6c8e8a</color>
+</resources>
