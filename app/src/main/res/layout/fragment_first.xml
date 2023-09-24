@@ -29,7 +29,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="2dp"
         app:adSize="BANNER"
-        app:adUnitId="@string/ad_id"
+        app:adUnitId="@string/banner_id"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
