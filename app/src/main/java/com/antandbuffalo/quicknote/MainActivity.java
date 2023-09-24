@@ -1,5 +1,7 @@
 package com.antandbuffalo.quicknote;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -69,6 +71,11 @@ public class MainActivity extends AppCompatActivity {
                 FirstFragment fragment = (FirstFragment) navHostFragment.getChildFragmentManager().getFragments().get(0);
                 fragment.clearText();
             }
+            return true;
+        }
+        if(id == R.id.action_privacy_policy) {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://antandbuffalo.blogspot.com/2023/09/quick-note-privacy-policy.html"));
+            startActivity(browserIntent);
             return true;
         }
 
