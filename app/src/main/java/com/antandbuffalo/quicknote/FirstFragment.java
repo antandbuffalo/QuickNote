@@ -12,6 +12,10 @@ import androidx.fragment.app.Fragment;
 
 import com.antandbuffalo.quicknote.databinding.FragmentFirstBinding;
 import com.antandbuffalo.quicknote.utilities.Constants;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 public class FirstFragment extends Fragment {
 
@@ -29,6 +33,7 @@ public class FirstFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        loadAd();
         System.out.println("asdf" + Storage.getString(getContext(), Constants.STORAGE_KEY_TEXT, ""));
         binding.editTextTextMultiLine.setText(Storage.getString(getContext(), Constants.STORAGE_KEY_TEXT, ""));
 
@@ -60,6 +65,17 @@ public class FirstFragment extends Fragment {
 //                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
 //            }
 //        });
+    }
+
+    public void loadAd() {
+        MobileAds.initialize(getContext(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        binding.adView.loadAd(adRequest);
     }
 
     public void clearText() {
