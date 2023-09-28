@@ -13,6 +13,9 @@
         android:theme="@style/Theme.QuickNote"
         tools:targetApi="31">
         <activity
+            android:name=".About"
+            android:label="About" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"

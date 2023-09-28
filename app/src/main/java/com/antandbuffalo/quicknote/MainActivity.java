@@ -65,6 +65,21 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
+        if (id == R.id.action_share) {
+            Fragment navHostFragment = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_content_main);
+            if (navHostFragment != null) {
+                FirstFragment fragment = (FirstFragment) navHostFragment.getChildFragmentManager().getFragments().get(0);
+                String text = fragment.getText();
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, text);
+                sendIntent.setType("text/plain");
+
+                Intent shareIntent = Intent.createChooser(sendIntent, null);
+                startActivity(shareIntent);
+            }
+            return true;
+        }
         if (id == R.id.action_clear) {
             Fragment navHostFragment = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_content_main);
             if (navHostFragment != null) {
@@ -73,9 +88,15 @@ public class MainActivity extends AppCompatActivity {
             }
             return true;
         }
-        if(id == R.id.action_privacy_policy) {
+        if (id == R.id.action_privacy_policy) {
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://antandbuffalo.blogspot.com/2023/09/quick-note-privacy-policy.html"));
             startActivity(browserIntent);
+            return true;
+        }
+
+        if (id == R.id.action_about) {
+            Intent intent = new Intent(this, About.class);
+            startActivity(intent);
             return true;
         }
 

@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">Quick Note</string>
+    <string name="action_share">Share</string>
     <string name="action_clear">Clear</string>
     <string name="action_privacy_policy">Privacy Policy</string>
+    <string name="action_about">About Us</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">Quick Note</string>
     <string name="second_fragment_label">Second Fragment</string>

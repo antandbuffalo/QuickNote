@@ -1,12 +1,3 @@
 <resources>
-    <string name="app_name">Quick Note</string>
-    <string name="action_clear">Clear</string>
-    <string name="action_privacy_policy">Privacy Policy</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">Quick Note</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-
     <string name="banner_id">ca-app-pub-3940256099942544/6300978111</string>
 </resources>

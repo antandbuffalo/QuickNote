@@ -78,6 +78,10 @@ public class FirstFragment extends Fragment {
         binding.adView.loadAd(adRequest);
     }
 
+    public String getText() {
+        return binding.editTextTextMultiLine.getText().toString();
+    }
+
     public void clearText() {
         binding.editTextTextMultiLine.setText("");
         Storage.putString(getContext(), Constants.STORAGE_KEY_TEXT, "");
