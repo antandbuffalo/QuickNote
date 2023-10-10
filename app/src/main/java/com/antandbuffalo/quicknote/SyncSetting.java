@@ -44,6 +44,15 @@ public class SyncSetting extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button addCurrentDeviceButton = findViewById(R.id.addCurrentDevice);
+        addCurrentDeviceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(currentContext, AddCurrentDevice.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
