@@ -10,8 +10,8 @@ android {
         applicationId = "com.antandbuffalo.quicknote"
         minSdk = 24
         targetSdk = 33
-        versionCode = 5
-        versionName = "0.0.5"
+        versionCode = 6
+        versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -35,6 +35,8 @@ android {
 
 dependencies {
 
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.8.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")

@@ -52,7 +52,6 @@ public class About extends AppCompatActivity {
 
     public void loadAd() {
         mAdView = this.findViewById(R.id.adView);
-        mAdView.setVisibility(View.INVISIBLE);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
     }

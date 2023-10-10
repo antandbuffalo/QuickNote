@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="0dp"
-    android:background="@color/brown_dark"
+    android:background="@color/colorPrimary"
     tools:context=".About">
 
     <TextView
@@ -89,7 +89,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="#00D33636"
         ads:adSize="BANNER"
         ads:adUnitId="@string/banner_id"></com.google.android.gms.ads.AdView>
 

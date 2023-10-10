@@ -2,6 +2,7 @@
     <string name="app_name">Quick Note</string>
     <string name="action_share">Share</string>
     <string name="action_clear">Clear</string>
+    <string name="action_sync">Sync</string>
     <string name="action_privacy_policy">Privacy Policy</string>
     <string name="action_about">About Us</string>
     <!-- Strings used for fragments for navigation -->
@@ -15,4 +16,5 @@
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
     </string>
+    <string name="title_activity_sync_setting">SyncSetting</string>
 </resources>

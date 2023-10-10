@@ -1,6 +1,7 @@
 package com.antandbuffalo.quicknote;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -98,6 +99,9 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, About.class);
             startActivity(intent);
             return true;
+        }
+        if(id == R.id.action_sync) {
+
         }
 
         return super.onOptionsItemSelected(item);
