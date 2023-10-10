@@ -5,11 +5,11 @@
     <color name="green_bright">#46ff46</color>
 
     <!--    colorPrimary-->
-    <color name="colorPrimary">#29201A</color>
+    <color name="colorPrimary">#C69A7D</color>
     <!--    colorPrimaryVariant-->
     <color name="colorPrimaryVariant">#29201A</color>
     <!--    colorOnPrimary-->
-    <color name="colorOnPrimary">#FF352921</color>
+    <color name="colorOnPrimary">#FF000000</color>
     <!--    colorSecondary-->
     <color name="colorSecondary">#FF2c4442</color>
     <!--    colorSecondaryVariant-->

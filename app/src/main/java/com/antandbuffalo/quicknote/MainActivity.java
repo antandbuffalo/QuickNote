@@ -101,7 +101,9 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         if(id == R.id.action_sync) {
-
+            Intent intent = new Intent(this, SyncSetting.class);
+            startActivity(intent);
+            return true;
         }
 
         return super.onOptionsItemSelected(item);

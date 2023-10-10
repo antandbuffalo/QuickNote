@@ -21,4 +21,15 @@ public class Storage {
     public static String getString(Context context, String key, String defaultValue) {
         return Storage.getSharedPreference(context).getString(key, defaultValue);
     }
+
+    public static Boolean putBoolean(Context context, String key, Boolean value) {
+        SharedPreferences.Editor editor = Storage.getSharedPreference(context).edit();
+        editor.putBoolean(key, value);
+        return editor.commit();
+    }
+
+    public static Boolean getBoolean(Context context, String key, Boolean defaultValue) {
+        return Storage.getSharedPreference(context).getBoolean(key, defaultValue);
+    }
+
 }
