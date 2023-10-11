@@ -3,10 +3,13 @@ package com.antandbuffalo.quicknote.service;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface ApiService {
-    @GET("users/{user}/repos")
-    Call<List<String>> listRepos(@Path("user") String user);
+//    https://sample-node-api-antandbuffalo.vercel.app/
+    @POST("/quicknote")
+    Call<String> sendNote(@Body QuickNoteModel quickNoteModel);
 }

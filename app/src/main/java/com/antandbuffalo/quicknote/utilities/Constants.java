@@ -17,5 +17,6 @@ public class Constants {
     public static final String FEEDBACK_EMAIL_POPUP_MESSAGE = "Send email using...";
     public static final String PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.antandbuffalo.quicknote";
 
+    public static final String SYNC_API_BASE_URL = "https://sample-node-api-antandbuffalo.vercel.app";
 
 }

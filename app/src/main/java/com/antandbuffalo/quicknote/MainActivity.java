@@ -5,6 +5,9 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 
+import com.antandbuffalo.quicknote.service.ApiService;
+import com.antandbuffalo.quicknote.service.DataHolder;
+import com.antandbuffalo.quicknote.utilities.Constants;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +25,9 @@ import com.antandbuffalo.quicknote.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
+
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
 //                        .setAction("Action", null).show();
 //            }
 //        });
+        DataHolder.getDataHolder();
     }
 
     @Override
@@ -100,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             return true;
         }
-        if(id == R.id.action_sync) {
+        if (id == R.id.action_sync) {
             Intent intent = new Intent(this, SyncSetting.class);
             startActivity(intent);
             return true;
