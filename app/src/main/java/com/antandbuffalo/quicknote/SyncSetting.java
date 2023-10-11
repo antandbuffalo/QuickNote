@@ -6,21 +6,15 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
-import com.antandbuffalo.quicknote.service.DataHolder;
-import com.antandbuffalo.quicknote.service.QuickNoteModel;
-import com.antandbuffalo.quicknote.service.QuickNoteResponse;
+
 import com.antandbuffalo.quicknote.utilities.Constants;
 import com.antandbuffalo.quicknote.utilities.Util;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class SyncSetting extends AppCompatActivity {
     Context currentContext = this;

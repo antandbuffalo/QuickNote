@@ -12,6 +12,8 @@ import androidx.fragment.app.Fragment;
 
 import com.antandbuffalo.quicknote.databinding.FragmentFirstBinding;
 import com.antandbuffalo.quicknote.utilities.Constants;
+import com.antandbuffalo.quicknote.utilities.Debouncer;
+import com.antandbuffalo.quicknote.utilities.Util;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
@@ -20,6 +22,8 @@ import com.google.android.gms.ads.initialization.OnInitializationCompleteListene
 public class FirstFragment extends Fragment {
 
     private FragmentFirstBinding binding;
+    private Debouncer debouncer = new Debouncer();
+    private Boolean isSyncEnabled = false;
 
     @Override
     public View onCreateView(
@@ -34,9 +38,9 @@ public class FirstFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         loadAd();
-        System.out.println("asdf" + Storage.getString(getContext(), Constants.STORAGE_KEY_TEXT, ""));
-        binding.editTextTextMultiLine.setText(Storage.getString(getContext(), Constants.STORAGE_KEY_TEXT, ""));
+        isSyncEnabled = Storage.getBoolean(getContext(), Constants.STORAGE_KEY_AUTO_SYNC, false);
 
+        binding.editTextTextMultiLine.setText(Storage.getString(getContext(), Constants.STORAGE_KEY_TEXT, ""));
         TextWatcher textWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -53,6 +57,14 @@ public class FirstFragment extends Fragment {
                 // This method is called after text has been changed
                 String newText = editable.toString();
                 Storage.putString(getContext(), Constants.STORAGE_KEY_TEXT, newText);
+                if (isSyncEnabled) {
+                    debouncer.debounce("sendData", new Runnable() {
+                        @Override
+                        public void run() {
+                            Util.sendData(getActivity().getContentResolver(), getContext());
+                        }
+                    }, 2000);
+                }
             }
         };
 
@@ -93,4 +105,9 @@ public class FirstFragment extends Fragment {
         binding = null;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        isSyncEnabled = Storage.getBoolean(getContext(), Constants.STORAGE_KEY_AUTO_SYNC, false);
+    }
 }
