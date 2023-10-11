@@ -11,5 +11,5 @@ import retrofit2.http.Path;
 public interface ApiService {
 //    https://sample-node-api-antandbuffalo.vercel.app/
     @POST("/quicknote")
-    Call<String> sendNote(@Body QuickNoteModel quickNoteModel);
+    Call<QuickNoteResponse> sendNote(@Body QuickNoteModel quickNoteModel);
 }
