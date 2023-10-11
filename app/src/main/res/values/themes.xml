@@ -11,7 +11,8 @@
         <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
         <item name="colorOnSecondary">@color/black</item>
 
-        <item name="android:textColorSecondary">@color/green_bright</item>
+<!--        this makes the underline in textbox green-->
+<!--        <item name="android:textColorSecondary">@color/green_bright</item>-->
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
     </style>
