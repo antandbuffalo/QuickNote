@@ -11,9 +11,9 @@
     <!--    colorOnPrimary-->
     <color name="colorOnPrimary">#FF000000</color>
     <!--    colorSecondary-->
-    <color name="colorSecondary">#FF2c4442</color>
+    <color name="colorSecondary">#FF555555</color>
     <!--    colorSecondaryVariant-->
     <color name="colorSecondaryVariant">#FF1c2f2d</color>
     <!--    colorOnSecondary-->
-    <color name="colorOnSecondary">#FF6c8e8a</color>
+    <color name="colorOnSecondary">#FF555555</color>
 </resources>

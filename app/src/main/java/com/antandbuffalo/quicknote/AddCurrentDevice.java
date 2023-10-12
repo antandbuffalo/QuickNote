@@ -48,7 +48,7 @@ public class AddCurrentDevice extends AppCompatActivity {
         }
         QuickNoteModel quickNoteModel = new QuickNoteModel();
         quickNoteModel.passcode = passcode;
-        Call<QuickNoteResponse> call = DataHolder.getDataHolder().apiService.validatePasscode(quickNoteModel);
+        Call<QuickNoteResponse> call = DataHolder.getDataHolder(this).apiService.validatePasscode(quickNoteModel);
         call.enqueue(new Callback<QuickNoteResponse>() {
             @Override
             public void onResponse(Call<QuickNoteResponse> call, Response<QuickNoteResponse> response) {

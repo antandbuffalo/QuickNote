@@ -17,4 +17,6 @@
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
     </string>
     <string name="title_activity_sync_setting">SyncSetting</string>
+
+    <string name="base_url">https://sample-node-api-antandbuffalo.vercel.app</string>
 </resources>

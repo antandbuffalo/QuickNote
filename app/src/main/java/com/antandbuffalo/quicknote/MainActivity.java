@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 //                        .setAction("Action", null).show();
 //            }
 //        });
-        DataHolder.getDataHolder();
+        DataHolder.getDataHolder(this);
     }
 
     @Override

@@ -21,4 +21,6 @@ public class Constants {
 //    public static final String SYNC_API_BASE_URL = "https://sample-node-api-antandbuffalo.vercel.app";
     public static final String SYNC_API_BASE_URL = "http://10.0.2.2:3002";
 
+    public static final String WEB_APP_URL = "https://quicknote-web.web.app/";
+
 }

@@ -35,7 +35,7 @@ public class Util {
         QuickNoteModel quickNoteModel = new QuickNoteModel();
         quickNoteModel.id = Util.getUniqueId(contentResolver, context);
         quickNoteModel.text = Storage.getString(context, Constants.STORAGE_KEY_TEXT, "");
-        Call<QuickNoteResponse> call = DataHolder.getDataHolder().apiService.sendNote(quickNoteModel);
+        Call<QuickNoteResponse> call = DataHolder.getDataHolder(context).apiService.sendNote(quickNoteModel);
         call.enqueue(new Callback<QuickNoteResponse>() {
             @Override
             public void onResponse(Call<QuickNoteResponse> call, Response<QuickNoteResponse> response) {

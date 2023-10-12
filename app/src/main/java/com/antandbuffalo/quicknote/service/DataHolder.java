@@ -1,5 +1,9 @@
 package com.antandbuffalo.quicknote.service;
 
+import android.content.Context;
+import android.content.res.Resources;
+
+import com.antandbuffalo.quicknote.R;
 import com.antandbuffalo.quicknote.utilities.Constants;
 
 import retrofit2.Retrofit;
@@ -9,21 +13,22 @@ public class DataHolder {
     private static DataHolder dataHolder;
     public ApiService apiService;
 
-    private static ApiService createRetrofit() {
+    private static ApiService createRetrofit(Context context) {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Constants.SYNC_API_BASE_URL)
+                .baseUrl(context.getString(R.string.base_url))
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         ApiService apiService = retrofit.create(ApiService.class);
         return apiService;
     }
+
     private DataHolder() {
     }
 
-    public static  DataHolder getDataHolder() {
+    public static DataHolder getDataHolder(Context context) {
         if (dataHolder == null) {
             dataHolder = new DataHolder();
-            dataHolder.apiService = createRetrofit();
+            dataHolder.apiService = createRetrofit(context);
         }
         return dataHolder;
     }

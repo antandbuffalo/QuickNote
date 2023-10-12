@@ -42,7 +42,7 @@ public class AddNewDevice extends AppCompatActivity {
         QuickNoteModel quickNoteModel = new QuickNoteModel();
         quickNoteModel.id = Util.getUniqueId(contentResolver, context);
         quickNoteModel.text = Storage.getString(context, Constants.STORAGE_KEY_TEXT, "");
-        Call<QuickNoteResponse> call = DataHolder.getDataHolder().apiService.generatePasscode(quickNoteModel);
+        Call<QuickNoteResponse> call = DataHolder.getDataHolder(this).apiService.generatePasscode(quickNoteModel);
         call.enqueue(new Callback<QuickNoteResponse>() {
             @Override
             public void onResponse(Call<QuickNoteResponse> call, Response<QuickNoteResponse> response) {
