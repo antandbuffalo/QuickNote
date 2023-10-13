@@ -1,11 +1,7 @@
 package com.antandbuffalo.quicknote.service;
 
 import android.content.Context;
-import android.content.res.Resources;
-
 import com.antandbuffalo.quicknote.R;
-import com.antandbuffalo.quicknote.utilities.Constants;
-
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
