@@ -1,5 +1,8 @@
 package com.antandbuffalo.quicknote.service;
 
+import androidx.annotation.Keep;
+
+@Keep
 public class QuickNoteResponse {
     private String status = null;
     private String text = null;
