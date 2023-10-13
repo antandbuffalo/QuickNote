@@ -20,6 +20,7 @@ import com.antandbuffalo.quicknote.service.QuickNoteModel;
 import com.antandbuffalo.quicknote.service.QuickNoteResponse;
 import com.antandbuffalo.quicknote.utilities.Constants;
 import com.antandbuffalo.quicknote.utilities.Util;
+import com.google.android.gms.ads.AdView;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -50,6 +51,9 @@ public class AddNewDevice extends AppCompatActivity {
                 startActivity(browserIntent);
             }
         });
+
+        AdView adView = findViewById(R.id.adView3);
+        Util.loadAd(getApplicationContext(), adView);
     }
 
     public void generatePasscode(ContentResolver contentResolver, Context context) {

@@ -4,10 +4,16 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.provider.Settings;
 
+import com.antandbuffalo.quicknote.R;
 import com.antandbuffalo.quicknote.Storage;
 import com.antandbuffalo.quicknote.service.DataHolder;
 import com.antandbuffalo.quicknote.service.QuickNoteModel;
 import com.antandbuffalo.quicknote.service.QuickNoteResponse;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 import java.util.UUID;
 
@@ -53,5 +59,16 @@ public class Util {
                 System.out.println("failure api call" + t);
             }
         });
+    }
+
+    public static void loadAd(Context context, AdView adView) {
+        MobileAds.initialize(context, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 }

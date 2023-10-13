@@ -80,7 +80,7 @@
         android:id="@+id/adView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         app:adSize="MEDIUM_RECTANGLE"
         app:adUnitId="@string/big_banner_1"
         app:layout_constraintBottom_toBottomOf="parent"
