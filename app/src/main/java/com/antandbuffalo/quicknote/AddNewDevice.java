@@ -5,7 +5,11 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Paint;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
@@ -36,6 +40,16 @@ public class AddNewDevice extends AppCompatActivity {
 
         passcodeText = findViewById(R.id.passcode);
         generatePasscode(getContentResolver(), this);
+
+        TextView webAppUrlView = findViewById(R.id.web_app_url);
+        webAppUrlView.setPaintFlags(webAppUrlView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        webAppUrlView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.WEB_APP_URL));
+                startActivity(browserIntent);
+            }
+        });
     }
 
     public void generatePasscode(ContentResolver contentResolver, Context context) {
