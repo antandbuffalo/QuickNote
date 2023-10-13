@@ -3,7 +3,6 @@ package com.antandbuffalo.quicknote;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,8 +16,6 @@ import com.antandbuffalo.quicknote.utilities.Util;
 
 
 public class SyncSetting extends AppCompatActivity {
-    Context currentContext = this;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,14 +27,14 @@ public class SyncSetting extends AppCompatActivity {
 
         Switch autoSyncSwitch = findViewById(R.id.autoSyncSwitch);
 
-        autoSyncSwitch.setChecked(Storage.getBoolean(currentContext, Constants.STORAGE_KEY_AUTO_SYNC, false));
+        autoSyncSwitch.setChecked(Storage.getBoolean(getApplicationContext(), Constants.STORAGE_KEY_AUTO_SYNC, false));
 
         autoSyncSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                Storage.putBoolean(currentContext, Constants.STORAGE_KEY_AUTO_SYNC, b);
+                Storage.putBoolean(getApplicationContext(), Constants.STORAGE_KEY_AUTO_SYNC, b);
                 if (b) {
-                    Util.sendData(getContentResolver(), currentContext);
+                    Util.sendData(getContentResolver(), getApplicationContext());
                 }
             }
         });
@@ -46,7 +43,7 @@ public class SyncSetting extends AppCompatActivity {
         addDeviceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(currentContext, AddNewDevice.class);
+                Intent intent = new Intent(getApplicationContext(), AddNewDevice.class);
                 startActivity(intent);
             }
         });
@@ -55,7 +52,7 @@ public class SyncSetting extends AppCompatActivity {
         addCurrentDeviceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(currentContext, AddCurrentDevice.class);
+                Intent intent = new Intent(getApplicationContext(), AddCurrentDevice.class);
                 startActivity(intent);
             }
         });
