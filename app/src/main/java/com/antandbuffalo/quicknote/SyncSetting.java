@@ -13,9 +13,15 @@ import android.widget.Switch;
 
 import com.antandbuffalo.quicknote.utilities.Constants;
 import com.antandbuffalo.quicknote.utilities.Util;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 
 public class SyncSetting extends AppCompatActivity {
+    AdView adView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +62,20 @@ public class SyncSetting extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        loadAd();
+    }
+
+    public void loadAd() {
+        adView = findViewById(R.id.adView2);
+        MobileAds.initialize(getApplicationContext(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
     @Override

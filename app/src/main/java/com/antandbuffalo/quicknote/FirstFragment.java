@@ -1,16 +1,20 @@
 package com.antandbuffalo.quicknote;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.antandbuffalo.quicknote.databinding.FragmentFirstBinding;
+import com.antandbuffalo.quicknote.service.DataHolder;
+import com.antandbuffalo.quicknote.service.QuickNoteResponse;
 import com.antandbuffalo.quicknote.utilities.Constants;
 import com.antandbuffalo.quicknote.utilities.Debouncer;
 import com.antandbuffalo.quicknote.utilities.Util;
@@ -18,6 +22,10 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
+import java.io.IOException;
+
+import retrofit2.Response;
 
 public class FirstFragment extends Fragment {
 
@@ -41,6 +49,8 @@ public class FirstFragment extends Fragment {
         isSyncEnabled = Storage.getBoolean(getContext(), Constants.STORAGE_KEY_AUTO_SYNC, false);
 
         binding.editTextTextMultiLine.setText(Storage.getString(getContext(), Constants.STORAGE_KEY_TEXT, ""));
+
+        new FetchData().execute();
         TextWatcher textWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -109,5 +119,32 @@ public class FirstFragment extends Fragment {
     public void onResume() {
         super.onResume();
         isSyncEnabled = Storage.getBoolean(getContext(), Constants.STORAGE_KEY_AUTO_SYNC, false);
+    }
+
+    private class FetchData extends AsyncTask<Void, Void, QuickNoteResponse> {
+        @Override
+        protected QuickNoteResponse doInBackground(Void... voids) {
+            DataHolder dataHolder = DataHolder.getDataHolder(getActivity().getApplicationContext());
+            try {
+                Response<QuickNoteResponse> response = dataHolder.apiService.getNote(Util.getUniqueId(getActivity().getContentResolver(), getActivity().getApplicationContext())).execute();
+                if (response.isSuccessful()) {
+                    return response.body();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(QuickNoteResponse data) {
+            if (data != null) {
+                // TODO: Update your UI here
+                binding.editTextTextMultiLine.setText(data.getText());
+            } else {
+                // TODO: Handle the error
+                Toast.makeText(getActivity().getApplicationContext(), "Error getting the data", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }

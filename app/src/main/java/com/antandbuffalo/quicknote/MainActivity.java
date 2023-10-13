@@ -3,11 +3,14 @@ package com.antandbuffalo.quicknote;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import com.antandbuffalo.quicknote.service.ApiService;
 import com.antandbuffalo.quicknote.service.DataHolder;
+import com.antandbuffalo.quicknote.service.QuickNoteResponse;
 import com.antandbuffalo.quicknote.utilities.Constants;
+import com.antandbuffalo.quicknote.utilities.Util;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +29,9 @@ import com.antandbuffalo.quicknote.databinding.ActivityMainBinding;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.io.IOException;
+
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -55,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 //                        .setAction("Action", null).show();
 //            }
 //        });
-        DataHolder.getDataHolder(this);
+//        DataHolder.getDataHolder(this);
     }
 
     @Override
