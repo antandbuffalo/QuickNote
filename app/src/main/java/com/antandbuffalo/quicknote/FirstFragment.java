@@ -138,12 +138,11 @@ public class FirstFragment extends Fragment {
 
         @Override
         protected void onPostExecute(QuickNoteResponse data) {
-            if (data != null) {
-                // TODO: Update your UI here
+            if (data != null && data.getText() != null && data.getText().trim().equalsIgnoreCase("")) {
                 binding.editTextTextMultiLine.setText(data.getText());
             } else {
                 // TODO: Handle the error
-                Toast.makeText(getActivity().getApplicationContext(), "Error getting the data", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity().getApplicationContext(), "Error getting the data", Toast.LENGTH_SHORT).show();
             }
         }
     }

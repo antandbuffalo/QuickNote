@@ -19,6 +19,6 @@
     </string>
     <string name="title_activity_sync_setting">SyncSetting</string>
 
-    <string name="base_url">https://sample-node-api-antandbuffalo.vercel.app</string>
+    <string name="base_url">https://quicknote-api-antandbuffalo.vercel.app/</string>
     <string name="web_app_url">https://quicknote-web.web.app/</string>
 </resources>
