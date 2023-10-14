@@ -32,6 +32,7 @@ public class FirstFragment extends Fragment {
     private FragmentFirstBinding binding;
     private Debouncer debouncer = new Debouncer();
     private Boolean isSyncEnabled = false;
+    private FetchData fetchData;
 
     @Override
     public View onCreateView(
@@ -42,6 +43,9 @@ public class FirstFragment extends Fragment {
         return binding.getRoot();
     }
 
+    public void refresh() {
+        new FetchData().execute();
+    }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -50,7 +54,7 @@ public class FirstFragment extends Fragment {
 
         binding.editTextTextMultiLine.setText(Storage.getString(getContext(), Constants.STORAGE_KEY_TEXT, ""));
 
-        new FetchData().execute();
+//        new FetchData().execute();
         TextWatcher textWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -121,7 +125,7 @@ public class FirstFragment extends Fragment {
         isSyncEnabled = Storage.getBoolean(getContext(), Constants.STORAGE_KEY_AUTO_SYNC, false);
     }
 
-    private class FetchData extends AsyncTask<Void, Void, QuickNoteResponse> {
+    public class FetchData extends AsyncTask<Void, Void, QuickNoteResponse> {
         @Override
         protected QuickNoteResponse doInBackground(Void... voids) {
             DataHolder dataHolder = DataHolder.getDataHolder(getActivity().getApplicationContext());
@@ -138,11 +142,10 @@ public class FirstFragment extends Fragment {
 
         @Override
         protected void onPostExecute(QuickNoteResponse data) {
-            if (data != null && data.getText() != null && data.getText().trim().equalsIgnoreCase("")) {
+            if (data != null && data.getText() != null && !data.getText().trim().equalsIgnoreCase("")) {
                 binding.editTextTextMultiLine.setText(data.getText());
             } else {
-                // TODO: Handle the error
-//                Toast.makeText(getActivity().getApplicationContext(), "Error getting the data", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity().getApplicationContext(), "Error getting the data", Toast.LENGTH_SHORT).show();
             }
         }
     }

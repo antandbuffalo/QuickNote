@@ -1,6 +1,8 @@
 package com.antandbuffalo.quicknote;
 
 import android.content.Intent;
+import android.graphics.Paint;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -48,6 +50,17 @@ public class About extends AppCompatActivity {
                 startActivity(Intent.createChooser(sharingIntent, "Share..."));
             }
         });
+
+        TextView webAppUrlView = findViewById(R.id.web_app_url);
+        webAppUrlView.setPaintFlags(webAppUrlView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        webAppUrlView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.WEB_APP_URL));
+                startActivity(browserIntent);
+            }
+        });
+
     }
 
     public void loadAd() {

@@ -28,20 +28,17 @@
         android:layout_below="@+id/textView3"
         android:layout_centerHorizontal="true" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/web_url"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@+id/imageView"-->
-<!--        android:layout_centerHorizontal="true"-->
-<!--        android:layout_marginTop="45dp"-->
-<!--        android:paddingLeft="12dp"-->
-<!--        android:paddingRight="12dp"-->
-<!--        android:textIsSelectable="true"-->
-<!--        android:text="@string/web_url"-->
-<!--        android:textAlignment="center"-->
-<!--        android:textAppearance="?android:attr/textAppearanceLarge"-->
-<!--        android:textColor="#ffffff" />-->
+    <TextView
+        android:id="@+id/web_app_url"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/share"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:clickable="true"
+        android:text="@string/web_app_url"
+        android:textColor="@color/colorOnPrimary"
+        android:textSize="24sp" />
 
     <TextView
         android:layout_width="wrap_content"

@@ -79,6 +79,12 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
+        if(id == R.id.action_refresh) {
+            Fragment navHostFragment = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_content_main);
+            FirstFragment fragment = (FirstFragment) navHostFragment.getChildFragmentManager().getFragments().get(0);
+            fragment.refresh();
+            return true;
+        }
         if (id == R.id.action_share) {
             Fragment navHostFragment = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_content_main);
             if (navHostFragment != null) {
