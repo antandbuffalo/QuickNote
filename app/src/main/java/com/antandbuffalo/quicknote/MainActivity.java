@@ -10,6 +10,7 @@ import com.antandbuffalo.quicknote.service.ApiService;
 import com.antandbuffalo.quicknote.service.DataHolder;
 import com.antandbuffalo.quicknote.service.QuickNoteResponse;
 import com.antandbuffalo.quicknote.utilities.Constants;
+import com.antandbuffalo.quicknote.utilities.Theme;
 import com.antandbuffalo.quicknote.utilities.Util;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -17,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.view.WindowCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
@@ -124,6 +126,11 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             return true;
         }
+        if(id == R.id.action_change_theme) {
+            Util.changeTheme(getApplicationContext());
+            applyTheme();
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -133,5 +140,15 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    public void applyTheme() {
+        if (Storage.getTheme(getApplicationContext()).equalsIgnoreCase(Theme.DEFAULT.getValue())) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+        } else if (Storage.getTheme(getApplicationContext()).equalsIgnoreCase(Theme.LIGHT.getValue())) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
     }
 }

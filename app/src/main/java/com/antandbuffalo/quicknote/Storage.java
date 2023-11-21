@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.antandbuffalo.quicknote.utilities.Constants;
+import com.antandbuffalo.quicknote.utilities.Theme;
 
 public class Storage {
 
@@ -30,6 +31,18 @@ public class Storage {
 
     public static Boolean getBoolean(Context context, String key, Boolean defaultValue) {
         return Storage.getSharedPreference(context).getBoolean(key, defaultValue);
+    }
+
+    public static String getTheme(Context context) {
+        SharedPreferences settings = Storage.getSharedPreference(context);
+        return settings.getString("theme", Theme.DEFAULT.getValue());
+    }
+
+    public static boolean setTheme(Context context, String theme) {
+        SharedPreferences settings = Storage.getSharedPreference(context);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString("theme", theme);
+        return editor.commit();
     }
 
 }

@@ -71,4 +71,14 @@ public class Util {
         AdRequest adRequest = new AdRequest.Builder().build();
         adView.loadAd(adRequest);
     }
+
+    public static boolean changeTheme(Context context) {
+        String theme = Storage.getTheme(context);
+        if (theme.equalsIgnoreCase(Theme.DARK.getValue())) {
+            Storage.setTheme(context, Theme.LIGHT.getValue());
+        } else {
+            Storage.setTheme(context, Theme.DARK.getValue());
+        }
+        return true;
+    }
 }
